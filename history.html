@@ -12,11 +12,17 @@ font-family:Arial;
 padding:40px;
 }
 
+h1{
+color:#ffbb00;
+margin-bottom:30px;
+}
+
 .box{
 background:#111827;
 padding:25px;
 border-radius:20px;
 margin-bottom:20px;
+box-shadow:0 0 15px rgba(255,187,0,.15);
 }
 
 .buy{
@@ -24,29 +30,36 @@ color:#00ff99;
 }
 
 .sell{
-color:red;
+color:#ff5252;
 }
 
-h1{
-color:#ffbb00;
+.time{
+color:#aaa;
+font-size:14px;
+margin-top:10px;
 }
 
 a{
+display:inline-block;
+margin-top:20px;
 color:#ffbb00;
 text-decoration:none;
+font-size:18px;
+}
+
+.empty{
+color:#aaa;
+font-size:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<h1>Transaction History</h1>
+<h1>📜 Transaction History</h1>
 
 <div id="historyContainer"></div>
-
-<br>
 
 <a href="dashboard.html">
 ⬅ Back Dashboard
@@ -60,28 +73,37 @@ let container = document.getElementById("historyContainer");
 
 if(history.length === 0){
 
-container.innerHTML = "<p>No transactions yet.</p>";
+container.innerHTML =
+"<p class='empty'>No transactions yet.</p>";
 
 }
 
-history.forEach(item=>{
+history.reverse().forEach(item=>{
 
 container.innerHTML += `
+
 <div class="box">
 
 <h2 class="${item.type.toLowerCase()}">
+
 ${item.type} ${item.asset}
+
 </h2>
 
 <p>
-Quantity: ${item.qty}
+Quantity : ${item.qty}
 </p>
 
 <p>
-Price: $${item.price}
+Price : $${item.price}
 </p>
 
+<div class="time">
+Trade Completed Successfully
 </div>
+
+</div>
+
 `;
 
 });
