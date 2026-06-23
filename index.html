@@ -13,7 +13,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </head>
 <body>
 
-<!-- NAVBAR -->
+<<h1 style="color:yellow;font-size:50px;">
+INDEX PAGE TEST
+</h1>
+
 
 <nav>
 
@@ -335,41 +338,7 @@ Professional Trading Platform
 </p>
 
 </footer>
-<script>
 
-async function loadPrices(){
-
-try{
-
-let response = await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd"
-);
-
-let data = await response.json();
-
-document.getElementById("btc").innerHTML =
-"$" + data.bitcoin.usd;
-
-document.getElementById("eth").innerHTML =
-"$" + data.ethereum.usd;
-
-document.getElementById("sol").innerHTML =
-"$" + data.solana.usd;
-
-}
-catch(e){
-
-console.log(e);
-
-}
-
-}
-
-loadPrices();
-
-setInterval(loadPrices,10000);
-
-</script>
 <script src="script.js"></script>
 
 </body>
