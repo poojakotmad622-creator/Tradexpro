@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transaction History</title>
+
+<style>
+
+body{
+background:#050816;
+color:white;
+font-family:Arial;
+padding:40px;
+}
+
+.box{
+background:#111827;
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.buy{
+color:#00ff99;
+}
+
+.sell{
+color:red;
+}
+
+h1{
+color:#ffbb00;
+}
+
+a{
+color:#ffbb00;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Transaction History</h1>
+
+<div id="historyContainer"></div>
+
+<br>
+
+<a href="dashboard.html">
+⬅ Back Dashboard
+</a>
+
+<script>
+
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+let container = document.getElementById("historyContainer");
+
+if(history.length === 0){
+
+container.innerHTML = "<p>No transactions yet.</p>";
+
+}
+
+history.forEach(item=>{
+
+container.innerHTML += `
+<div class="box">
+
+<h2 class="${item.type.toLowerCase()}">
+${item.type} ${item.asset}
+</h2>
+
+<p>
+Quantity: ${item.qty}
+</p>
+
+<p>
+Price: $${item.price}
+</p>
+
+</div>
+`;
+
+});
+
+</script>
+
+</body>
+</html>
